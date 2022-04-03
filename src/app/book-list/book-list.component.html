@@ -1,0 +1,28 @@
+<!-- <p>book-list works!</p> -->
+
+
+<div class="container">
+<h2>Book List</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Book Title</th> 
+            <th>Book Author</th>
+            <th>Book Category</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor ="let book of books">
+            <td>{{book.name}}</td>
+            <td>{{book.author}}</td>
+            <td>{{book.category}}</td>
+            <td>
+                <button (click)="updateBook(book.id)" class="btn btn-info">Update</button>
+                <button (click)="deleteBook(book.id)" class="btn btn-danger" style="margin-left:10px">Delete</button>
+                
+                <button (click)="bookDetailes(book.id)" class="btn btn-info" style="margin-left:10px">View</button>   
+        </tr>
+    </tbody>
+</table>
+</div>
