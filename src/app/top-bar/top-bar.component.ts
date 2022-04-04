@@ -9,11 +9,13 @@ import { AuthService } from '../auth/auth.service';
 })
 export class TopBarComponent implements OnInit {
   isLoggedIn$ !:Observable<Boolean>;
+  isLoggedOut$ !:Observable<Boolean>;
 
   constructor(private authService:AuthService) { }
 
   ngOnInit(): void{
     this.isLoggedIn$=this.authService.isLoggedIn;
+  
   }
 
   onLogout(){

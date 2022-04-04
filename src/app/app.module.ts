@@ -14,9 +14,13 @@ import { BookDetailsComponent } from './book-details/book-details.component';
 import { LoginComponent } from './login/login.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { FooterComponent } from './footer/footer.component';
-import { HomeComponent } from './home/home.component';
 import { AuthService } from './auth/auth.service';
 import { AuthGuard } from './auth/auth.guard';
+import { StudentDetailsComponent } from './student-details/student-details.component';
+import { StudentListComponent } from './student-list/student-list.component';
+import { StudentService } from './student.service';
+import { CreateStudentComponent } from './create-student/create-student.component';
+import { UpdateStudentComponent } from './update-student/update-student.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +32,10 @@ import { AuthGuard } from './auth/auth.guard';
     LoginComponent,
     TopBarComponent,
     FooterComponent,
-    HomeComponent
+    StudentDetailsComponent,
+    StudentListComponent,
+    CreateStudentComponent,
+    UpdateStudentComponent
 
   ],
   imports: [
@@ -39,7 +46,7 @@ import { AuthGuard } from './auth/auth.guard';
     ReactiveFormsModule
 
   ],
-  providers: [BookService,AuthService, AuthGuard],
+  providers: [BookService,AuthService, AuthGuard,StudentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

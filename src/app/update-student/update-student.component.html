@@ -1,0 +1,27 @@
+
+<div class="col-md-6 offset-md-3"> 
+
+    <h3>Update Student</h3>
+    <form (ngSubmit)="onSubmit()">
+       
+        <div class="form-group">
+            <label>Student Roll No:</label><br>
+            <input type="text" class="form-control" id="roll"
+                [(ngModel)]="student.roll_no" name="roll">
+        </div>
+        <div class="form-group">
+           <label>Studnet Name:</label><br>
+           <input type="text" class="form-control" id="name"
+               [(ngModel)]="student.name" name="name">
+       </div>
+       <div class="form-group">
+           <label>Student Branch</label><br>
+           <input type="text" class="form-control" id="branch"
+               [(ngModel)]="student.branch" name="branch">
+       </div>
+        <br>
+       <button class="btn btn-success" type="submit">Submit</button>
+       
+   </form>
+   
+   </div>
