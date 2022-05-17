@@ -21,6 +21,8 @@ import { StudentListComponent } from './student-list/student-list.component';
 import { StudentService } from './student.service';
 import { CreateStudentComponent } from './create-student/create-student.component';
 import { UpdateStudentComponent } from './update-student/update-student.component';
+import { StudenthomeComponent } from './studenthome/studenthome.component';
+import { MyBooksComponent } from './my-books/my-books.component';
 
 @NgModule({
   declarations: [
@@ -35,16 +37,17 @@ import { UpdateStudentComponent } from './update-student/update-student.componen
     StudentDetailsComponent,
     StudentListComponent,
     CreateStudentComponent,
-    UpdateStudentComponent
+    UpdateStudentComponent,
+    StudenthomeComponent,
+    MyBooksComponent
 
   ],
-  imports: [
-    BrowserModule,
+  imports: 
+    [BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
-
+    ReactiveFormsModule 
   ],
   providers: [BookService,AuthService, AuthGuard,StudentService],
   bootstrap: [AppComponent]

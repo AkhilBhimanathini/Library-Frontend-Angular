@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../auth/auth.service';
+import { Student } from '../student';
 import { User } from '../user';
+import { UserserviceService } from '../userservice.service';
 
 @Component({
   selector: 'app-login',
@@ -10,21 +12,33 @@ import { User } from '../user';
 })
 export class LoginComponent implements OnInit {
   form!:FormGroup;
+  msg!:string;
   private formSubmitAttempt!:boolean;
 
-  user:User =new User();
-  constructor(private fb:FormBuilder,private authService:AuthService) { }
+  student:Student =new Student();
+  userLogged:Student=new Student();
+  constructor(private fb:FormBuilder,private authService:AuthService,private service: UserserviceService) { }
 
   ngOnInit(): void {
     this.form=this.fb.group({
-      email:['',Validators.required],
+      name:['',Validators.required],
       password:['',Validators.required]
     })
   }
 
   onSubmit(){
     if(this.form.valid){
-      this.authService.login(this.form.value);
+      this.service.getlogin(this.form.value).subscribe(data=>{ 
+        if(data!=null){
+          this.userLogged=data;
+           this.authService.login(this.form.value,this.userLogged.id);
+        }
+   },
+    error=>{
+      console.log(error);
+      this.msg="Invalid Credentials. Please enter valid email and password"
+    }
+   );
     }
     this.formSubmitAttempt=true;
   }

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Book } from './book';
+import { Borrow } from './borrow';
 
 @Injectable({
   providedIn: 'root'
@@ -36,6 +37,20 @@ export class BookService {
     return this.httpClient.delete(`${url}/${id}`);
   }
 
+  borrowBook(borrow:Borrow):Observable<Borrow>{
+    let url='/api/borrow';
+    return this.httpClient.post<Borrow>(url,borrow);
+  }
+
+  borrowList(sid:number):Observable<Book[]>{
+    let url='/api/borrowlist';
+    return this.httpClient.get<Book[]>(`${url}/${sid}`);
+  }
+  
+  borrowDelete(sid:number,book_id:number):Observable<Object>{
+    let url='/api/borrowdelete';
+    return this.httpClient.delete(`${url}/${sid}/${book_id}`,{ responseType: 'text' as 'json'});
+  }
   
 
 }
